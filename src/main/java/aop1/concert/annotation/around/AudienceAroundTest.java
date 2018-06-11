@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AudienceAroundConfig.class})
-//带解决问题：这里指定了所要加载的配置文件是AudienceAroundConfig，可总是连带着加载另一个配置文件类AudienceConfig. maybe this just is a bug
+//待解决问题：这里指定了所要加载的配置文件是AudienceAroundConfig，可总是连带着加载另一个配置文件类AudienceConfig. maybe this just is a bug
 public class AudienceAroundTest {
 
     @Autowired
