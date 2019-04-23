@@ -10,6 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>source-spittr</module>
+        <module>spring-batch-service</module>
+        <module>spring-schedule</module>
+        <module>spring-boot-first-demo</module>
+        <module>spring-securing-web-application</module>
+        <module>spring-base</module>
+        <module>spring-data-access-mysql</module>
     </modules>
 
     <properties>
