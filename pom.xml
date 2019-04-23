@@ -16,6 +16,8 @@
         <module>spring-securing-web-application</module>
         <module>spring-base</module>
         <module>spring-data-access-mysql</module>
+        <module>spring-redis</module>
+        <module>spring-common</module>
     </modules>
 
     <properties>
