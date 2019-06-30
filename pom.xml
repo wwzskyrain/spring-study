@@ -18,6 +18,7 @@
         <module>spring-data-access-mysql</module>
         <module>spring-redis</module>
         <module>spring-common</module>
+        <module>spring-test</module>
     </modules>
 
     <properties>
