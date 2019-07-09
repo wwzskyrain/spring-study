@@ -1,4 +1,4 @@
-package erik.schedule;
+package erik.spring.boot.schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

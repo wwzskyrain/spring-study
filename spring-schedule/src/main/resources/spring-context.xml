@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"
+          p:corePoolSize="5"
+          p:maxPoolSize="10"
+          p:queueCapacity="25"/>
+
+    <bean id="taskExecutorExample" class="erik.spring.schedule.TaskExecutorExample"
+          p:taskExecutor-ref="threadPoolTaskExecutor"/>
+
+    <bean id="threadPoolTaskScheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler"/>
+
+    <bean id="TaskSchedulerExample" class="erik.spring.schedule.TaskSchedulerExample"
+          p:taskScheduler-ref="threadPoolTaskScheduler"/>
+
+
+</beans>
