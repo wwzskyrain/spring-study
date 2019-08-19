@@ -19,6 +19,8 @@
         <module>spring-redis</module>
         <module>spring-common</module>
         <module>spring-test</module>
+        <module>spring-retry-demo</module>
+        <module>spring-transction</module>
     </modules>
 
     <properties>
