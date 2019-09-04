@@ -23,13 +23,6 @@
 
     <dependencies>
 
-        <!-- project related -->
-        <dependency>
-            <groupId>erik.ximalaya</groupId>
-            <artifactId>erik-spring-common</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -53,6 +46,7 @@
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

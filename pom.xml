@@ -21,6 +21,8 @@
         <module>spring-test</module>
         <module>spring-retry-demo</module>
         <module>spring-transction</module>
+        <module>spring-httpinvoke</module>
+        <module>spring-mvc-first</module>
     </modules>
 
     <properties>
