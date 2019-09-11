@@ -1,6 +1,6 @@
-package config;
+package erik.study.spring.base.annotation.config;
 
-import model.Connection;
+import erik.study.spring.base.annotation.model.Connection;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

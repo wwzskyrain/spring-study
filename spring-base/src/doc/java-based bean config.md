@@ -1,6 +1,6 @@
 # spring base
 
-## 1.java-based config
+## 1.java-based erik.study.spring.base.annotation.config
 ### 1.1 Bean dependency to bean method parameter
 1.  Bean方法参数的注入，即Bean依赖，有四种情况
     ```$xslt

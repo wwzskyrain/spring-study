@@ -1,9 +1,9 @@
-package main;
+package erik.study.spring.base.annotation.main;
 
-import config.SpringBeanDependencyConfig;
-import factory.ConnectionFactory;
-import model.Connection;
-import model.ConnectionPool;
+import erik.study.spring.base.annotation.config.SpringBeanDependencyConfig;
+import erik.study.spring.base.annotation.factory.ConnectionFactory;
+import erik.study.spring.base.annotation.model.Connection;
+import erik.study.spring.base.annotation.model.ConnectionPool;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

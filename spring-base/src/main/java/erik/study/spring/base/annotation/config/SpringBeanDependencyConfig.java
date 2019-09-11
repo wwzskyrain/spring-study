@@ -1,16 +1,13 @@
-package config;
+package erik.study.spring.base.annotation.config;
 
-import factory.ConnectionFactory;
-import model.Connection;
-import model.ConnectionPool;
-import org.springframework.beans.factory.annotation.Autowired;
+import erik.study.spring.base.annotation.factory.ConnectionFactory;
+import erik.study.spring.base.annotation.model.Connection;
+import erik.study.spring.base.annotation.model.ConnectionPool;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.annotation.Resource;
 
 
 @Configuration

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="steelAxe" class="erik.study.spring.base.life.beans.impl.SteelAxe"/>
+    <bean id="chinese" class="erik.study.spring.base.life.beans.impl.Chinese" init-method="init">
+        <property name="axe" ref="steelAxe"/>
+    </bean>
+
+    <bean class="erik.study.spring.base.life.processor.MyBeanPostProcessor"/>
+    <bean class="erik.study.spring.base.life.processor.MyBeanFactoryPostProcessor"/>
+
+</beans>

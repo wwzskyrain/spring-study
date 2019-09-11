@@ -1,4 +1,4 @@
-package config;
+package erik.study.spring.base.annotation.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

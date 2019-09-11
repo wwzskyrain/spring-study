@@ -34,6 +34,6 @@ class BeeperControl {
     public static void main(String[] args) {
         System.out.println(new Date());
         new BeeperControl().beepForAnHour();
-        System.out.println("main over!");
+        System.out.println("erik.study.spring.base.annotation.main over!");
     }
 }

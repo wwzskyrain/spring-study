@@ -1,6 +1,6 @@
-package factory;
+package erik.study.spring.base.annotation.factory;
 
-import model.Connection;
+import erik.study.spring.base.annotation.model.Connection;
 import org.springframework.beans.factory.FactoryBean;
 
 public class ConnectionFactory implements FactoryBean<Connection> {

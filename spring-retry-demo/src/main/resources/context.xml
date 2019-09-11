@@ -16,7 +16,7 @@
 
     <context:component-scan
             base-package="edu.erik"/>
-    <context:annotation-config/>
+    <context:annotation-erik.study.spring.base.annotation.config/>
     <aop:aspectj-autoproxy/>
     <task:annotation-driven/>
     <bean class="org.springframework.retry.annotation.RetryConfiguration" />

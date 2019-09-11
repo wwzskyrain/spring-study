@@ -1,4 +1,4 @@
-package model;
+package erik.study.spring.base.annotation.model;
 
 public class ConnectionPool {
 

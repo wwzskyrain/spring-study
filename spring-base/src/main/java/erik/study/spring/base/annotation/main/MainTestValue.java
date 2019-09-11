@@ -1,7 +1,6 @@
-package main;
+package erik.study.spring.base.annotation.main;
 
-import config.ConfigurationFileInject;
-import config.SpringBeanDependencyConfig;
+import erik.study.spring.base.annotation.config.ConfigurationFileInject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
