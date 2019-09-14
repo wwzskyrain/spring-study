@@ -1,9 +1,9 @@
-package inject; /**
+package erik.study.spring.test.inject; /**
  * @author erik.wang
  * @date 2019/05/19
  **/
 
-import inject.component.InjectTest;
+import erik.study.spring.test.inject.component.InjectDemo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -23,12 +23,12 @@ public class Application {
         logger.info("User name: {}", dataSource.getUsername());
         logger.info("Password: {}", dataSource.getPassword());
 
-        InjectTest injectTest = ctx.getBean("injectTest", InjectTest.class);
+        InjectDemo inject = ctx.getBean("injectTest", InjectDemo.class);
 
-        logger.info(injectTest.getDbUrl());
-        logger.info(injectTest.getDbUserName());
-        logger.info(injectTest.getDbPassword());
 
+        logger.info(inject.getDbUrl());
+        logger.info(inject.getDbUserName());
+        logger.info(inject.getDbPassword());
 
         ctx.close();
 

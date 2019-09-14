@@ -23,6 +23,8 @@
         <module>spring-transction</module>
         <module>spring-httpinvoke</module>
         <module>spring-mvc-first</module>
+        <module>spring-aop</module>
+        <module>spring-module-demo</module>
     </modules>
 
     <properties>

@@ -15,6 +15,6 @@
         <property name="password" value="${db.password}"></property>
     </bean>
     
-    <context:component-scan base-package="inject.component"/>
+    <context:component-scan base-package="erik.study.spring.test.inject.component"/>
 
 </beans>

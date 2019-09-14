@@ -1,4 +1,4 @@
-package inject.component;
+package erik.study.spring.test.inject.component;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  **/
 
 @Component
-public class InjectTest {
+public class InjectDemo {
 
     @Value("${db.url}")
     private String dbUrl;
