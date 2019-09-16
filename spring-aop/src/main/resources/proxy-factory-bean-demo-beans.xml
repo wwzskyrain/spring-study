@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <bean id="sayHelloAfter1" class="erik.study.spring.aop.proxyfactorybeandemo.interceptor.SayHelloAfter"/>
+    <bean id="sayHelloAfter2" class="erik.study.spring.aop.proxyfactorybeandemo.interceptor.SayHelloAfter"/>
+    <bean id="sayHelloBefore1" class="erik.study.spring.aop.proxyfactorybeandemo.interceptor.SayHelloBefore"/>
+    <bean id="sayHelloBefore2" class="erik.study.spring.aop.proxyfactorybeandemo.interceptor.SayHelloBefore"/>
+
+
+    <bean id="sayHelloImpl" class="erik.study.spring.aop.proxyfactorybeandemo.service.impl.Waiter"/>
+
+    <bean id="proxyWaiter" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interfaces" value="erik.study.spring.aop.proxyfactorybeandemo.service.Wait"/>
+        <property name="interceptorNames" value="sayHelloAfter1,sayHelloAfter2,sayHelloBefore2,sayHelloBefore1"/>
+        <property name="target" ref="sayHelloImpl"/>
+    </bean>
+
+</beans>

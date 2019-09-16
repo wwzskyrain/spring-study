@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 
@@ -54,5 +55,11 @@ public class ProductController {
         return product;
     }
 
+    @RequestMapping("/redirect")
+    public ModelAndView testRedSSS() throws Exception {
+        logger.info("request for redirect.");
+        ModelAndView modelAndView = new ModelAndView("redirect:http://www.qq.com");
+        return modelAndView;
+    }
 
 }

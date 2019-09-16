@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+    <!-- 指定自动搜索Bean组件、自动搜索切面类 -->
+    <context:component-scan base-package="erik.study.spring.aop.after.service,erik.study.spring.aop.after.aspect">
+        <context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+    </context:component-scan>
+
+    <bean id="helloImpl" class="erik.study.spring.aop.after.service.impl.HelloImpl"/>  <!-- 这里显示配置的Hello的实现，不是代理实现；当
+     用 context.getBean(Hello.class); 时会报错：发现了两个Hello。 -->
+    <!-- 启动@AspectJ支持 -->
+    <aop:aspectj-autoproxy/>
+</beans>
