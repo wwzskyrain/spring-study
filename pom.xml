@@ -23,10 +23,13 @@
         <module>spring-httpinvoke</module>
         <module>spring-mvc-first</module>
         <module>spring-aop</module>
+        <module>spring-rabbitmq</module>
+        <module>spring-cache</module>
+        <module>spring-erik-util</module>
     </modules>
 
     <properties>
-        <spring.version>5.0.9.RELEASE</spring.version>
+        <spring.version>5.2.3.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <aspect.version>1.8.5</aspect.version>
     </properties>
@@ -102,5 +105,55 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+
+<!--     spring   -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

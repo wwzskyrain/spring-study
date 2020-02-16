@@ -60,7 +60,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.37</version>
         </dependency>
 
         <dependency>
@@ -74,11 +73,17 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.8.0-beta2</version>
         </dependency>
+
         <dependency>
             <groupId>edu.erik</groupId>
             <artifactId>spring-common</artifactId>
             <version>1.0.1</version>
-            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
         </dependency>
 
     </dependencies>
