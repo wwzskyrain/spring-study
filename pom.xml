@@ -26,6 +26,7 @@
         <module>spring-rabbitmq</module>
         <module>spring-cache</module>
         <module>spring-erik-util</module>
+        <module>spring-study-rabbitmq</module>
     </modules>
 
     <properties>
