@@ -5,6 +5,9 @@ import erik.spring.transaction.service.impl.AccountServiceImplWithTransactionalA
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author
+ */
 @Configuration
 public class AccountServiceImplWithTransactionAnnotationConfig {
 

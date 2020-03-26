@@ -11,6 +11,10 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import java.math.BigDecimal;
 
+/**
+ * @author erik.wang
+ * 用编程方式引入事务特性的'转账服务实现'
+ */
 @Service
 public class AccountServiceImplWithTransactionTemplate implements AccountService {
 
@@ -21,7 +25,7 @@ public class AccountServiceImplWithTransactionTemplate implements AccountService
     private TransactionTemplate transactionTemplate;
 
     @Override
-    public void transfer(final String outer,final String inner,final BigDecimal money) {
+    public void transfer(final String outer, final String inner, final BigDecimal money) {
 
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
@@ -38,6 +42,11 @@ public class AccountServiceImplWithTransactionTemplate implements AccountService
             }
         });
 
+
+    }
+
+    @Override
+    public void transferFacade(String outer, String inner, BigDecimal money) {
 
     }
 }

@@ -2,11 +2,14 @@ package erik.spring.transaction.bootstrap;
 
 import erik.spring.transaction.bootstrap.config.*;
 import erik.spring.transaction.service.AccountService;
+import erik.spring.transaction.service.impl.AccountServiceImpl;
+import erik.spring.transaction.service.impl.AccountServiceImplWithTransactionalAnnotation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.math.BigDecimal;
-
 
 
 /**
@@ -18,6 +21,8 @@ import java.math.BigDecimal;
  * 在具体某个方法来开启事务：通过@Transaction这个方法级别的注解来完成事务的开启，见AccountService的实现类AccountServiceImplWithTransactionalAnnotation
  */
 public class MainDeclaredTransactionWithAnnotation {
+
+    private static final Logger logger = LoggerFactory.getLogger(MainDeclaredTransactionWithAnnotation.class);
 
     public static void main(String[] args) {
 
@@ -32,9 +37,12 @@ public class MainDeclaredTransactionWithAnnotation {
 
         AccountService accountService = context.getBean(AccountService.class);
 
-        String outer = "tom";
-        String inner = "merry";
-        accountService.transfer(outer, inner, new BigDecimal("1000"));
+        String outer = "merry";
+        String inner = "tom";
+        accountService.transferFacade(inner, outer, new BigDecimal("5"));
+//        accountService.transferFacade(outer, inner, new BigDecimal("5"));
+//        accountService.transferFacade(outer, inner, new BigDecimal("1000"));
+        logger.info("transfer over.");
 
     }
 

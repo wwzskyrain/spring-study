@@ -9,6 +9,9 @@ import javax.sql.DataSource;
 
 import java.beans.PropertyVetoException;
 
+/**
+ * @author erik.wang
+ */
 @Configuration
 public class DataSourceConfig {
 

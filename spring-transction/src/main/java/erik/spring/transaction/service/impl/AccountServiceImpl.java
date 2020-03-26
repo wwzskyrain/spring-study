@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
+/**
+ * @author
+ * 没有事务控制的转账服务实现
+ */
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
@@ -18,5 +22,11 @@ public class AccountServiceImpl implements AccountService {
 
         accountDao.in(inner, money);
         System.out.println("in over");
+    }
+
+
+    @Override
+    public void transferFacade(String outer, String inner, BigDecimal money) {
+
     }
 }

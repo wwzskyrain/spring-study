@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -28,57 +30,50 @@ public class SendService {
 
 
     public void sendOrderDesc() {
-        for (int i = 0; i < 5; i++) {
-
-            long expireTime = (5 - i) * 10L;
-            Order order = new Order();
-            order.setBuyerId(123123L);
-            order.setId(expireTime);
-            order.setOrderNo("2020-03-05-00001");
-            order.setProductName("5天儿童会员");
-
-            MessageProperties messageProperties = new MessageProperties();
-            messageProperties.setExpiration(String.valueOf(expireTime*1000));
-
-            Message message = new Message(JSON.toJSONString(order).getBytes(), messageProperties);
-            rabbitTemplate.send("1", message);
-            logger.info("success_to_send_message, {}", JSON.toJSONString(order));
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        List<Order> orders = buildDelayOrderMessage();
+        for (int i = orders.size() - 1; i >= 0; i--) {
+            sendMessage(orders.get(i));
         }
     }
 
     public void sendOrderAsc() {
-
-        for (int i = 0; i < 5; i++) {
-
-            long expireTime = i * 10L;
-            Order order = new Order();
-            order.setBuyerId(1111L);
-            order.setId(expireTime);
-            order.setOrderNo("2020-03-06-00001");
-            order.setProductName("5天儿童会员1");
-
-            MessageProperties messageProperties = new MessageProperties();
-            messageProperties.setExpiration(String.valueOf(expireTime*1000));
-
-            Message message = new Message(JSON.toJSONString(order).getBytes(), messageProperties);
-            rabbitTemplate.send("1", message);
-            logger.info("success_to_send_message, {}", JSON.toJSONString(order));
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        List<Order> orders = buildDelayOrderMessage();
+        for (int i = 0; i < orders.size(); i++) {
+            sendMessage(orders.get(i));
         }
+
     }
 
-    public void buildDelayOrderMessage() {
+    private void sendMessage(Order order) {
+        MessageProperties properties = new MessageProperties();
+        properties.setExpiration(String.valueOf(order.getId() * 10 * 1000));
 
+        Message message = new Message(JSON.toJSONBytes(order), properties);
+        rabbitTemplate.send("1", message);
+        logger.info("success_to_send_message:{}", JSON.toJSONString(order));
+        waiteSomeSecond(1);
+    }
 
+    private List<Order> buildDelayOrderMessage() {
+
+        List<Order> orders = new ArrayList<Order>();
+        for (int i = 0; i < 5; i++) {
+            Order order = new Order();
+            order.setBuyerId(i * 1111L);
+            order.setId(i * 1L);
+            order.setOrderNo("2020-03-06-000" + i);
+            order.setProductName("5天儿童会员" + i);
+            orders.add(order);
+        }
+        return orders;
+    }
+
+    private void waiteSomeSecond(Integer sleepSeconds) {
+        try {
+            TimeUnit.SECONDS.sleep(sleepSeconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 

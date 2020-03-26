@@ -2,7 +2,6 @@ package erik.study.spring.rabbitmq;
 
 import erik.study.spring.rabbitmq.config.Config;
 import erik.study.spring.rabbitmq.service.MessageListener;
-import erik.study.spring.rabbitmq.service.SendService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
