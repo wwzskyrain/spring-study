@@ -7,11 +7,11 @@ package erik.study.spring.aop.after.service;
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:
  * <br/>Date:
+ *
  * @author Yeeku.H.Lee kongyeeku@163.com
  * @version 1.0
  */
-public interface World
-{
-	// 定义一个简单方法，模拟应用中的业务逻辑方法
-	public void bar();
+public interface World {
+    // 定义一个简单方法，模拟应用中的业务逻辑方法
+    public void bar();
 }

@@ -18,15 +18,17 @@ import sun.rmi.runtime.Log;
  * @author Yeeku.H.Lee kongyeeku@163.com
  * @version 1.0
  */
-// 定义一个切面
 @Aspect
 public class AfterAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(AfterAspect.class);
 
 
-    // 匹配erik.study.spring.aop.after.service包下所有类的、
-    // 所有方法的执行作为切入点
+    /**
+     * 所有方法的执行作为切入点
+     * 匹配erik.study.spring.aop.after.service包下所有类的所有方法
+     */
+
     @After("execution(* erik.study.spring.aop.after.service.*.*(..))")
     public void release() {
         logger.info("模拟方法结束后的释放资源...");

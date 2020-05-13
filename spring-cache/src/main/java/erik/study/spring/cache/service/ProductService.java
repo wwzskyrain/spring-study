@@ -5,9 +5,12 @@ import erik.study.spring.cache.Product;
 import erik.spring.util.aop.annotation.LogExecutionTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -20,21 +23,11 @@ import java.util.concurrent.TimeUnit;
  * @Date 2020/1/11
  */
 @Service
-public class ProductService {
+public class ProductService implements ApplicationContextAware {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
-
     private static final String PRODUCT_NAME_PATTERN = "product_name_%d";
-
     public static Map<Long, Product> productMap = new HashMap<>();
-
-    public static Product supply(Long productId) {
-        return new Product(productId, getProductName(productId), new BigDecimal(productId));
-    }
-
-    public static String getProductName(Long productId) {
-        return String.format(PRODUCT_NAME_PATTERN, productId);
-    }
 
     static {
         for (int i = 0; i < 10; i++) {
@@ -45,16 +38,70 @@ public class ProductService {
         }
     }
 
+    private ApplicationContext context;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
+    }
+
+    public static Product supply(Long productId) {
+        return new Product(productId, getProductName(productId), new BigDecimal(productId));
+    }
+
+    public static String getProductName(Long productId) {
+        return String.format(PRODUCT_NAME_PATTERN, productId);
+    }
+
+
     @Cacheable(cacheNames = "productWithId", condition = "#productId < 3")
     @LogExecutionTime
     public Product findProductById(Long productId) {
-
+        logger.info("method-findProductById been called.");
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         return productMap.get(productId);
+    }
+
+
+    /**
+     * 主要用来测试'自调用时注解无效'的情况
+     * 1.P是C的代理类，则P.m1和P.m2则都会触发m1和m2的aop注解
+     * 2.C.m1和C.m2都不会触发m1和m2
+     * 3.总结1和2，代理对象调用方法会触发代理逻辑，被代理对象(源对象)调用方法不会触发代理逻辑
+     * 4.点题：在m1中调用m2，或者反过来，都是不会触发后者的aop注解的，why？
+     * 很简单，因为我们在写m1和m2时，使用this.m2/this.m1的，这样就是
+     * 在C上调用，即作用到被代理对象自身上，而不是作用到代理对象。
+     * 为什么是这样呢？其实很简单，因为我们不可能在代理层次编写代码，因为我们编写代码的时候
+     * 是不知道以后会添加什么代理逻辑的，程序执行机制，也必定要保证这种安全性的。
+     * <p>
+     * 5.那么如何在自调用的时候，保留aop注解生效呢？
+     * 1.   当然就找到代理对象了，然后从代理对象开始调用就可以了呀。
+     * 2.   所以关键是如何找到代理对象，谁是代理对象？
+     * 3.   我们从spring自动注入的对象都是代理对象的
+     * 4.   所以我们可以保留springContext的引用，从其中取出代理对象。
+     * 5.   第二种方法，那就是在设计类的时候，就保留一个代理类对象引用，并且在
+     * 对象初始化完毕后，设置它，以待自调用时使用。但是这样的设计就很蹩脚了。
+     * 6.   打假专区：Spring的@Transactional有事务传播的情况下，@T1调用@T2的时候，@T2会生效吗？
+     * 只要@T1和@T2不在同一个类，就可以生效呀，也就是事务在传播的时候，是不能在同一个类的。
+     *
+     * @param productId
+     * @param thisObj
+     * @return
+     */
+    public Product findProductBySelfCall(Long productId, Object thisObj) {
+        logger.info("method-findProductBySelfCall been called.");
+
+//        ProductService productService = (ProductService) context.getBean("productService");
+//        logger.info("productService==this？{}", productService == this);
+//        return productService.findProductById(productId);
+
+        ProductService productservice = (ProductService) thisObj;
+        return productservice.findProductById(productId);
+
     }
 
     /**

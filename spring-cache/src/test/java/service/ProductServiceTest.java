@@ -217,4 +217,17 @@ public class ProductServiceTest {
         }
         logger.info("{}", productService.findProductByName(product1Name));
     }
+
+    @Test
+    public void test_find_product_by_self_call() {
+
+        Long productId = 1L;
+        productService.findProductById(productId);
+        Product product = productService.findProductBySelfCall(productId, productService);
+
+        logger.info("result={}", JSON.toJSONString(product));
+
+        productService.findProductById(productId);
+        productService.findProductById(productId);
+    }
 }
