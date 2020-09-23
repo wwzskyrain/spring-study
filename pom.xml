@@ -26,6 +26,7 @@
         <module>spring-cache</module>
         <module>spring-erik-util</module>
         <module>spring-study-rabbitmq</module>
+        <module>spring-rabbit-ttl</module>
     </modules>
 
     <properties>
@@ -150,8 +151,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.8.0-beta2</version>
         </dependency>
 
     </dependencies>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-study</artifactId>
+        <groupId>edu.erik</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-rabbit-ttl</artifactId>
+
+    <properties>
+        <xdcs.version>0.0.11</xdcs.version>
+    </properties>
+
+
+    <dependencies>
+        <!-- common util -->
+        <dependency>
+            <groupId>com.ximalaya.business</groupId>
+            <artifactId>business-rabbitmq-ttlconfig</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>5.9.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>2.1.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>2.1.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ximalaya.xdcs</groupId>
+            <artifactId>xdcs-client</artifactId>
+            <version>${xdcs.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ximalaya.xdcs</groupId>
+            <artifactId>xdcs-spring</artifactId>
+            <version>${xdcs.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
