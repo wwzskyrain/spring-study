@@ -10,7 +10,7 @@
 
     <properties>
         <spring.version>4.3.10.RELEASE</spring.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <aspect.version>1.8.5</aspect.version>
     </properties>
 
