@@ -97,10 +97,13 @@ public class ProductService implements ApplicationContextAware {
 
 //        ProductService productService = (ProductService) context.getBean("productService");
 //        logger.info("productService==this？{}", productService == this);
-//        return productService.findProductById(productId);
+//        return productSer？vice.findProductById(productId);
 
-        ProductService productservice = (ProductService) thisObj;
-        return productservice.findProductById(productId);
+        //  直接用this来调用，则不触发AOP日志
+        return this.findProductById(productId);
+
+//        ProductService productservice = (ProductService) thisObj;
+//        return productservice.findProductById(productId);
 
     }
 

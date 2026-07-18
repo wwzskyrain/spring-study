@@ -20,7 +20,7 @@ public class ScheduledTasks {
     public void reportCurrentTime() {
         log.info("test-fixedRate:The start time is now {}", dateFormat.format(new Date()));
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(6);
             log.info("test-fixedRate:The end time is now:{}", dateFormat.format(new Date()));
         } catch (InterruptedException e) {
             e.printStackTrace();

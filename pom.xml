@@ -27,6 +27,8 @@
         <module>spring-erik-util</module>
         <module>spring-study-rabbitmq</module>
         <module>spring-rabbit-ttl</module>
+        <module>spring-threadpool-demo</module>
+        <module>spring-schedule-thread-conflict</module>
     </modules>
 
     <properties>
